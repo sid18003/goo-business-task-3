@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 20px;
+      background-color: #3498db;
+      color: #ffffff;
+    }
+
+    .header input {
+      width: calc(100% - 40px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .subject input {
+      width: calc(100% - 40px);
+      padding: 10px;
+      margin: 10px 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .message textarea {
+      width: calc(100% - 40px);
+      padding: 10px;
+      margin: 10px 20px;
+      height: 150px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .toolbar {
+      margin: 0 20px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-top: 1px solid #ddd;
+    }
+
+    .send-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      margin: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <label for="recipient-email">Enter Recipient's Email:</label>
+      <input type="email" id="recipient-email" name="recipient-email" placeholder="e.g. user@gmail.com" autocomplete="off" required>
+    </div>
+    <div class="subject">
+      <label for="email-subject">Enter Subject:</label>
+      <input type="text" id="email-subject" name="email-subject" placeholder="enter your subject here" required>
+    </div>
+    <div class="message">
+      <label for="email-message">Enter Message:</label>
+      <textarea id="email-message" name="email-message" placeholder="Write here" required></textarea>
+    </div>
+    <div class="toolbar">
+     </div>
+    <button class="send-btn" onclick="validateAndSend()">Send Email</button>
+    <div class="error-message" id="error-message"></div>
+
+    <script>
+      function validateAndSend() {
+        var recipientEmail = document.getElementById("recipient-email").value;
+        if (!recipientEmail.includes("@")) {
+          document.getElementById("error-message").innerText = "Recipient's email must contain the '@' symbol.";
+          return;
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
